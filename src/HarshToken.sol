@@ -1,0 +1,19 @@
+// SPDX-License-Identifier: Unlicense
+pragma solidity ^0.8.13;
+
+import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract HarshToken  is ERC20 { 
+    uint public number;
+    address owner;
+
+    constructor(uint256 _ initialvalue) ERC20("HARSH","MUASH"){
+        _mint(msg.sender,initialvalue)
+        owner=msg.sender;
+    }
+
+    function mintto(address to , uint amount ) public{
+        @require(msg.sender==owner);
+        _mint(to,amount);
+    }
+}
