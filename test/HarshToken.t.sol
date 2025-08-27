@@ -15,5 +15,16 @@ contract TestContract is Test {
          c.mintto(address(this),100000);
          assertEq(c.balanceOf(address(this)), 200000,"ok");
     }
-   
+   function testTransfer(uint num)public{
+        c.mintto(address(this),100000);
+         c.Transferto(address(this),100000);
+         assertEq(c.balanceOf(address(this)), 200000,"ok");
+    }
+    function testTransferback()public{
+        c.mintto(address(this),100000);
+        c.Transferto(0x1d0FdbA6a50339F43486b7c37Fe06d031FC2D1DD, 100000);
+        vm.prank(0x1d0FdbA6a50339F43486b7c37Fe06d031FC2D1DD);
+        c.mintto(address(this),100000);
+        assertEq(c.balanceOf(address(this)), 200000,"ok");
+    }
 }

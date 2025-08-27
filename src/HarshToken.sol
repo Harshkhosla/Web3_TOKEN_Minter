@@ -13,7 +13,11 @@ contract HarshToken  is ERC20 {
     }
 
     function mintto(address to , uint amount ) public{
-        require(msg.sender==owner);
+        // require(msg.sender==owner);
         _mint(to,amount);
+    }
+     function Transferto(address to , uint amount ) public{
+        // require(msg.sender==owner);
+        transfer(to,amount);
     }
 }
