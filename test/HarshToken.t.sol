@@ -11,9 +11,9 @@ contract TestContract is Test {
     function setUp() public {
         c = new HarshToken(100000);
     }
-    function testaddition(uint num)public{
-        // c.addnumber(100);
-         assertEq(c.number(), 200, "ok");
+    function testMinting(uint num)public{
+         c.mintto(address(this),100000);
+         assertEq(c.balanceOf(address(this)), 200000,"ok");
     }
    
 }

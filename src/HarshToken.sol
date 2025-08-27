@@ -7,13 +7,13 @@ contract HarshToken  is ERC20 {
     uint public number;
     address owner;
 
-    constructor(uint256 _ initialvalue) ERC20("HARSH","MUASH"){
-        _mint(msg.sender,initialvalue)
+    constructor(uint256 _initialvalue) ERC20("HARSH","MUASH"){
+        _mint(msg.sender,_initialvalue);
         owner=msg.sender;
     }
 
     function mintto(address to , uint amount ) public{
-        @require(msg.sender==owner);
+        require(msg.sender==owner);
         _mint(to,amount);
     }
 }
