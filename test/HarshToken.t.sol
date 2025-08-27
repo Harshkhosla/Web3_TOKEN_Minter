@@ -34,4 +34,11 @@ contract TestContract is Test {
           c.transferFrom(address(this),0x1d0FdbA6a50339F43486b7c37Fe06d031FC2D1DD,100000);
            assertEq(c.balanceOf(address(this)), 100000,"ok");
     }
+    function test_RevertApprovals()public{
+          c.mintto(address(this),100000);
+          c.approve(0x1d0FdbA6a50339F43486b7c37Fe06d031FC2D1DD,100000);
+          vm.prank(0x1d0FdbA6a50339F43486b7c37Fe06d031FC2D1DD);
+           vm.expectRevert();
+          c.transferFrom(address(this),0x1d0FdbA6a50339F43486b7c37Fe06d031FC2D1DD,200000);
+    }
 }
