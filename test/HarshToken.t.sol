@@ -7,9 +7,17 @@ import "src/HarshToken.sol";
 
 contract TestContract is Test {
     HarshToken c;
-
+     event Transfer(address indexed from, address indexed to, uint256 amount);
     function setUp() public {
         c = new HarshToken(100000);
+    }
+        function test_ExpectEmit() public {
+        c.mintto(address(this), 100);
+        vm.expectEmit(true, true, false, true);
+        // The event we expect
+        emit Transfer(address(this), 0x075c299cf3b9FCF7C9fD5272cd2ed21A4688bEeD, 100);
+        // The event we get
+        c.transfer(0x075c299cf3b9FCF7C9fD5272cd2ed21A4688bEeD, 100);
     }
     function testMinting(uint num)public{
          c.mintto(address(this),100000);
