@@ -20,4 +20,8 @@ contract HarshToken  is ERC20 {
         // require(msg.sender==owner);
         transfer(to,amount);
     }
+
+    function approve(address from , address to , uint amount) public {
+        _approve(from,to,amount);
+    }
 }
